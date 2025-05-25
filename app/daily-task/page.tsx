@@ -27,9 +27,7 @@ interface TaskCardProps {
   onClick: () => void;
 }
 
-interface AdBannerProps {
-  content: string;
-}
+interface AdBannerProps {}
 
 interface TaskModalProps {
   testnet: TestnetTask;
@@ -226,17 +224,15 @@ const TaskModal: React.FC<TaskModalProps> = ({ testnet, onClose }) => {
   );
 };
 
-const AdBanner: React.FC<AdBannerProps> = ({ content }) => {
+const AdBanner: React.FC<AdBannerProps> = () => {
   return (
     <div className="bg-gradient-to-br from-[#4459ff] to-[#6a45ff] text-white rounded-2xl p-5 flex flex-col items-center justify-center h-full overflow-hidden relative">
       <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full -mr-6 -mt-6"></div>
       <div className="absolute bottom-0 left-0 w-23 h-24 bg-white/5 rounded-full -ml-8 -mb-8"></div>
       
       <div className="relative z-10 text-center">
-        
-        <h3 className="font-bold text-lg mb-2">Ads </h3>
-        <p className="text-sm">{content}</p>
-       
+        <h3 className="font-bold text-lg mb-2">Ads</h3>
+        <p className="text-sm">Show Ads Here!</p>
       </div>
     </div>
   );
@@ -493,8 +489,6 @@ const DailyTasksDashboard: React.FC = () => {
     }
   ];
 
-  const adContent = "Show Ads Here!";
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="text-center mb-12">
@@ -523,7 +517,7 @@ const DailyTasksDashboard: React.FC = () => {
         {/* Ads section - compact width */}
         <div className="lg:w-64 flex-shrink-0">
           <div className="sticky top-6 h-full">
-            <AdBanner content={adContent} />
+            <AdBanner />
           </div>
         </div>
       </div>

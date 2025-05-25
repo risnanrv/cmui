@@ -56,17 +56,17 @@ const Dashboard = () => {
         display: false,
       },
       tooltip: {
-        backgroundColor: '#1e293b',
-        titleColor: '#f8fafc',
-        bodyColor: '#e2e8f0',
-        borderColor: '#334155',
+        backgroundColor: 'white',
+        titleColor: '#1F2937',
+        bodyColor: '#1F2937',
+        borderColor: '#E5E7EB',
         borderWidth: 1,
         padding: 12,
         cornerRadius: 8,
         displayColors: false,
         callbacks: {
-          label: (context: import('chart.js').TooltipItem<'bar'>) => {
-            return ` ${context.parsed.y} XP`;
+          label: function(context: any) {
+            return `$${context.parsed.y.toLocaleString()}`;
           }
         }
       },
@@ -77,16 +77,16 @@ const Dashboard = () => {
         beginAtZero: true,
         grid: {
           drawBorder: false,
-          color: '#e2e8f0',
+          color: '#E5E7EB',
         },
         ticks: {
-          color: '#64748b',
+          color: '#6B7280',
           padding: 8,
           font: {
-            size: 11,
+            size: 12,
           },
-          callback: (value: number) => {
-            return value === 0 ? '0' : `${value / 1000}k`;
+          callback: function(value: any) {
+            return `$${value.toLocaleString()}`;
           }
         },
       },
@@ -96,9 +96,10 @@ const Dashboard = () => {
           display: false,
         },
         ticks: {
-          color: '#64748b',
+          color: '#6B7280',
+          padding: 8,
           font: {
-            size: 11,
+            size: 12,
           },
         },
       },

@@ -12,7 +12,6 @@ import {
   Filler,
   TooltipItem,
   Scale,
-  Tick,
   CoreScaleOptions,
 } from 'chart.js';
 

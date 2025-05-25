@@ -27,10 +27,6 @@ interface TaskCardProps {
   onClick: () => void;
 }
 
-interface AdBannerProps {
-  content: string;
-}
-
 interface TaskModalProps {
   testnet: TestnetTask;
   onClose: () => void;

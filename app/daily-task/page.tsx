@@ -166,7 +166,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ testnet, onClose }) => {
         
         {/* Task List */}
         <div className="px-6 pb-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 250px)' }}>
-          <h3 className="font-semibold text-lg text-gray-900 mb-4">Today's Tasks</h3>
+          <h3 className="font-semibold text-lg text-gray-900 mb-4">Today&apos;s Tasks</h3>
           <div className="space-y-3">
             {testnet.tasks.map((task) => (
               <div key={task.id} className={`p-4 rounded-xl border ${task.completed ? 'border-green-100 bg-green-50' : 'border-gray-100 bg-gray-50'} transition-all`}>
@@ -235,7 +235,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ content }) => {
       <div className="relative z-10 text-center">
         
         <h3 className="font-bold text-lg mb-2">Ads </h3>
-       
+        <p className="text-sm">{content}</p>
        
       </div>
     </div>
@@ -493,7 +493,7 @@ const DailyTasksDashboard: React.FC = () => {
     }
   ];
 
-  const adContent = "Unlock premium testnet tasks with 2x rewards!";
+  const adContent = "Show Ads Here!";
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

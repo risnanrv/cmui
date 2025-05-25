@@ -1,0 +1,164 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+
+const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Banner ads data
+  const banners = [
+    {
+      id: 1,
+      title: "Multi-Chain Wallet Support",
+      cta: "Connect Now",
+      bgClass: "bg-[#4459ff]"
+    },
+    {
+      id: 2,
+      title: "NFT Portfolio Tracking",
+      cta: "View Collections",
+      bgClass: "bg-purple-600"
+    },
+    {
+      id: 3,
+      title: "DeFi Yield Dashboard",
+      cta: "Track Earnings",
+      bgClass: "bg-indigo-600"
+    }
+  ];
+
+  // Carousel controls
+  const nextSlide = () => setCurrentSlide((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
+
+  // Auto-rotate banners
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="bg-white py-12 md:py-20">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* Left Column - Text Content */}
+          <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl md:text-5xl font-bold text-black"
+            >
+              YOUR NEW <span className="text-[#4459ff]">WEB3 SUPER APP</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-gray-700 max-w-lg mx-auto lg:mx-0"
+            >
+              Manage every Web3 project, daily activity, and overall progress — all in one place.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4"
+            >
+              <button className="px-6 py-3 rounded-lg bg-[#4459ff] text-white font-medium hover:bg-[#3a4fd6] transition-colors shadow-md">
+                Join Now
+              </button>
+              <button className="px-6 py-3 rounded-lg border-2 border-[#4459ff] text-[#4459ff] font-medium hover:bg-[#4459ff]/10 transition-colors">
+                Learn More
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Right Column - Monkey Image and Banner */}
+          <div className="lg:w-1/2 relative">
+            {/* Monkey Image */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              className="relative mb-8 lg:mb-0"
+            >
+              <div className="relative w-full max-w-md mx-auto">
+                <Image
+                  src="data:image/jpeg;base64,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"
+                  alt="Crypto Monkey"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto"
+                />
+                <div className="absolute -z-10 w-64 h-64 rounded-full bg-[#4459ff]/10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+              </div>
+            </motion.div>
+
+            {/* Banner Carousel */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="absolute -bottom-10 left-0 right-0 mx-auto w-full max-w-xl"
+            >
+              <div className="relative h-36 md:h-40 rounded-xl overflow-hidden shadow-lg">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className={`absolute inset-0 ${banners[currentSlide].bgClass} flex items-center justify-between px-6`}
+                  >
+                    <div className="text-white">
+                      <h3 className="text-xl font-bold">{banners[currentSlide].title}</h3>
+                      <button className="mt-2 px-4 py-1.5 rounded-md bg-white/20 hover:bg-white/30 transition-colors text-sm">
+                        {banners[currentSlide].cta}
+                      </button>
+                    </div>
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                      <span className="text-white text-2xl">🪙</span>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Navigation Arrows */}
+                <button 
+                  onClick={prevSlide}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/30 rounded-full p-1.5 transition-all"
+                >
+                  <FiArrowLeft className="w-4 h-4 text-white" />
+                </button>
+                <button 
+                  onClick={nextSlide}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/30 rounded-full p-1.5 transition-all"
+                >
+                  <FiArrowRight className="w-4 h-4 text-white" />
+                </button>
+
+                {/* Dot Indicators */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                  {banners.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${currentSlide === index ? 'bg-white' : 'bg-white/50'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;

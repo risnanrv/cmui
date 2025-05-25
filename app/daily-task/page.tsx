@@ -230,11 +230,11 @@ const AdBanner: React.FC<AdBannerProps> = ({ content }) => {
   return (
     <div className="bg-gradient-to-br from-[#4459ff] to-[#6a45ff] text-white rounded-2xl p-5 flex flex-col items-center justify-center h-full overflow-hidden relative">
       <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full -mr-6 -mt-6"></div>
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-8 -mb-8"></div>
+      <div className="absolute bottom-0 left-0 w-23 h-24 bg-white/5 rounded-full -ml-8 -mb-8"></div>
       
       <div className="relative z-10 text-center">
         
-        <h3 className="font-bold text-lg mb-2">Ads</h3>
+        <h3 className="font-bold text-lg mb-2">Ads </h3>
        
        
       </div>

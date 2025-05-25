@@ -27,7 +27,9 @@ interface TaskCardProps {
   onClick: () => void;
 }
 
-interface AdBannerProps {}
+interface AdBannerProps {
+  content: string;
+}
 
 interface TaskModalProps {
   testnet: TestnetTask;
@@ -224,7 +226,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ testnet, onClose }) => {
   );
 };
 
-const AdBanner: React.FC<AdBannerProps> = () => {
+const AdBanner = () => {
   return (
     <div className="bg-gradient-to-br from-[#4459ff] to-[#6a45ff] text-white rounded-2xl p-5 flex flex-col items-center justify-center h-full overflow-hidden relative">
       <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full -mr-6 -mt-6"></div>
@@ -232,7 +234,7 @@ const AdBanner: React.FC<AdBannerProps> = () => {
       
       <div className="relative z-10 text-center">
         <h3 className="font-bold text-lg mb-2">Ads</h3>
-        <p className="text-sm">Show Ads Here!</p>
+        <p className="text-sm">Unlock premium testnet tasks with 2x rewards!</p>
       </div>
     </div>
   );

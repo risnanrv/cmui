@@ -10,6 +10,10 @@ import {
   Tooltip,
   Legend,
   Filler,
+  TooltipItem,
+  Scale,
+  Tick,
+  CoreScaleOptions,
 } from 'chart.js';
 
 ChartJS.register(
@@ -65,7 +69,7 @@ const Dashboard = () => {
         cornerRadius: 8,
         displayColors: false,
         callbacks: {
-          label: function(context: any) {
+          label: function(context: TooltipItem<'bar'>) {
             return `$${context.parsed.y.toLocaleString()}`;
           }
         }
@@ -85,8 +89,8 @@ const Dashboard = () => {
           font: {
             size: 12,
           },
-          callback: function(value: any) {
-            return `$${value.toLocaleString()}`;
+          callback: function(this: Scale<CoreScaleOptions>, tickValue: string | number) {
+            return `$${Number(tickValue).toLocaleString()}`;
           }
         },
       },
@@ -155,7 +159,7 @@ const Dashboard = () => {
     if (isHovered) return;
     
     const interval = setInterval(() => {
-      setCurrentAdIndex((prevIndex) => (prevIndex + 1) % ads.length);
+      setCurrentAdIndex((prevIndex: number) => (prevIndex + 1) % ads.length);
     }, 5000);
     
     return () => clearInterval(interval);
@@ -167,11 +171,11 @@ const Dashboard = () => {
   };
 
   const nextAd = () => {
-    setCurrentAdIndex((prevIndex) => (prevIndex + 1) % ads.length);
+    setCurrentAdIndex((prevIndex: number) => (prevIndex + 1) % ads.length);
   };
 
   const prevAd = () => {
-    setCurrentAdIndex((prevIndex) => (prevIndex - 1 + ads.length) % ads.length);
+    setCurrentAdIndex((prevIndex: number) => (prevIndex - 1 + ads.length) % ads.length);
   };
 
   return (
